@@ -6,3 +6,4 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(csv_minidb src/main.cpp)
+add_executable(db_tests src/tests.cpp)

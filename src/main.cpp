@@ -190,7 +190,7 @@ private:
 QueryEngine::QueryEngine(StorageManager& storage_manager) : storage_(storage_manager) {}
 
 QueryResult QueryEngine::execute(const QueryPlan& plan) {
-    if (std::holds_on_v<std::monostate, QueryPlan>(plan)) {
+    if (std::holds_alternative<std::monostate>(plan)) {
         return "Error: Unsupported or malformed query.";
     }
 
@@ -262,6 +262,7 @@ void printRow(const Row& row) {
     std::cout << "}" << std::endl;
 }
 
+#ifndef TEST_MODE
 int main() {
     StorageManager storage;
     QueryEngine engine(storage);
@@ -293,3 +294,4 @@ int main() {
     }
     return 0;
 }
+#endif
